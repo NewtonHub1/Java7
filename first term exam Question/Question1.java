@@ -16,15 +16,15 @@ class Banking {
 
 void withdraw(double amount){
     if (amount <= 0 ){
-        System.out.println("invalid withdrawl amount");
+        System.out.println("invalid withdrawl amount : ");
 
     }else if ( amount > balance ) {
-        System.out.println("insufficent Balance");
+        System.out.println("insufficent Balance : ");
 
     }else
     {
         balance = balance - amount;
-        System.out.println("Amount withdrawn succesfully");
+        System.out.println("Amount withdrawn succesfully : ");
     }
 }
 
@@ -40,13 +40,13 @@ void displayBalance(){
         Scanner input = new Scanner(System.in);
         Banking account = new Banking();
 
-        System.out.print("Enter deposite amount");
+        System.out.print("Enter deposite amount : ");
         double depositeAmount = input.nextDouble();
 
         account.deposite(depositeAmount);
         account.displayBalance();
 
-        System.out.print("Enter Withrawamount");
+        System.out.print("Enter Withrawamount : ");
         double withdrawAmount = input.nextDouble();
         
         account.withdraw(withdrawAmount);
