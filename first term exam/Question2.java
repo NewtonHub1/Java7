@@ -16,6 +16,9 @@ public class Question2 {
                 bonus = salary * 0.20;
             }
 
+
+            
+
             if (salary >= 20000) {
                 if (salary < 40000) {
                     bonus = salary * 0.15;

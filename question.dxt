@@ -1,0 +1,21 @@
+create a book class with  the following attribute :
+bookId
+title
+author
+
+Create a parameterized constructor to initialize  these values.
+create a method displayInformation() to display the book detials.
+in main(). create two book objects using the constructorand display their display their Information
+
+
+create an employee class  with : 
+id 
+name 
+salary 
+
+
+Create a parameterized constructor to initialize  these values.
+
+create a method displayInformation() to display the employee information.
+
+create threeemployee obkect in main ().

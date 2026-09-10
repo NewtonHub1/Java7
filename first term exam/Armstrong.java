@@ -25,4 +25,5 @@ public class Armstrong {
 
         input.close();
     }
+
 }
