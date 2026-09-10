@@ -9,7 +9,6 @@ class ConstructionQuestionIm {
         this.title = title;
         this.author = author;
     }
-}
 
   
     void displayInformation() {
@@ -18,17 +17,17 @@ class ConstructionQuestionIm {
         System.out.println("Author: " + author);
         
     }
-public class ConstructionQuestionM {
+public class ConstructionQuestionlm {
 
      public static void main(String[] args) {
 
         ConstructionQuestionIm book1 = 
-        new ConstructionQuestionIm(2, "Java Programming", "Newton");
+        new ConstructionQuestioIm(2, "Java Programming", "Newton");
 
         book1.displayInformation();
         
     }
 }
 
-
+}
    
