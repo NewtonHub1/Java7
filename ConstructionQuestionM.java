@@ -1,4 +1,3 @@
-
 class ConstructionQuestionIm {
     int bookId;
     String title;
@@ -10,24 +9,20 @@ class ConstructionQuestionIm {
         this.author = author;
     }
 
-  
     void displayInformation() {
         System.out.println("Book ID: " + bookId);
         System.out.println("Title: " + title);
         System.out.println("Author: " + author);
-        
     }
-public class ConstructionQuestionlm {
+}
 
-     public static void main(String[] args) {
+public class ConstructionQuestionM {
 
-        ConstructionQuestionIm book1 = 
-        new ConstructionQuestioIm(2, "Java Programming", "Newton");
+    public static void main(String[] args) {
+
+        ConstructionQuestionIm book1 =
+        new ConstructionQuestionIm(2, "Java Programming", "Newton");
 
         book1.displayInformation();
-        
     }
 }
-
-}
-   
