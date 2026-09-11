@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class ConstructionQuestionIm {
     int bookId;
     String title;
@@ -20,9 +22,23 @@ public class ConstructionQuestionM {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Book ID: ");
+        int bookId = sc.nextInt();
+        sc.nextLine(); 
+
+        System.out.print("Enter Book Title: ");
+        String title = sc.nextLine();
+
+        System.out.print("Enter Author Name: ");
+        String author = sc.nextLine();
+
         ConstructionQuestionIm book1 =
-        new ConstructionQuestionIm(2, "Java Programming", "Newton");
+                new ConstructionQuestionIm(bookId, title, author);
 
         book1.displayInformation();
+
+        sc.close();
     }
 }
