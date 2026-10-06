@@ -1,0 +1,1223 @@
+# Chapter 6: STRING IN JAVA
+
+**Subject:** Computer Engineering
+**Class:** 11
+**Topic:** String in Java
+
+---
+
+## Learning Objectives
+
+After studying this chapter, students will be able to:
+
+1. Define a String in Java.
+2. Declare and initialize String variables.
+3. Explain the difference between `String`, `StringBuffer`, and `StringBuilder`.
+4. Use important `StringBuffer` methods.
+5. Find the length of a String.
+6. Perform String concatenation.
+7. Write simple Java programs using Strings.
+
+---
+
+# 6.1 STRING DEFINITION
+
+A **String** is a sequence of characters used to store text.
+
+For example:
+
+```java
+"Hello"
+"Java"
+"Computer Engineering"
+"Ram"
+```
+
+In Java, `String` is a **class** provided by the `java.lang` package.
+
+Therefore, String is not a primitive data type like `int`, `char`, `float`, or `double`.
+
+### Example
+
+```java
+String name = "Ram";
+```
+
+Here:
+
+* `String` → class/data type
+* `name` → variable
+* `"Ram"` → String value
+
+### Character positions in a String
+
+String indexing starts from **0**.
+
+For example:
+
+```text
+J  a  v  a
+0  1  2  3
+```
+
+So:
+
+* `J` is at index 0
+* `a` is at index 1
+* `v` is at index 2
+* `a` is at index 3
+
+---
+
+## String vs Character
+
+A single character is written using **single quotation marks**.
+
+```java
+char grade = 'A';
+```
+
+A String is written using **double quotation marks**.
+
+```java
+String name = "Ram";
+```
+
+| Character                 | String                          |
+| ------------------------- | ------------------------------- |
+| Uses single quotes `' '`  | Uses double quotes `" "`        |
+| Stores a single character | Stores a sequence of characters |
+| Example: `'A'`            | Example: `"Apple"`              |
+| Data type: `char`         | Class: `String`                 |
+
+---
+
+## Important Point: String is Immutable
+
+Java Strings are **immutable**.
+
+Immutable means that once a String object is created, its content cannot be changed.
+
+Example:
+
+```java
+String name = "Ram";
+
+name = "Shyam";
+```
+
+Here, the original String `"Ram"` is not modified. The variable `name` is simply made to refer to another String.
+
+For Class 11, remember:
+
+> **String objects cannot be modified after they are created.**
+
+---
+
+# 6.2 STRING DECLARATION
+
+A String variable can be declared and initialized as follows:
+
+### Syntax
+
+```java
+String variableName = "value";
+```
+
+### Example
+
+```java
+String name = "Apar";
+String address = "Pokhara";
+String college = "ABC College";
+```
+
+---
+
+## Declaration and Initialization Separately
+
+We can also declare a String first and initialize it later.
+
+```java
+String name;
+name = "Ram";
+```
+
+### Example Program
+
+```java
+class StringDemo {
+    public static void main(String[] args) {
+
+        String name;
+        name = "Ram";
+
+        System.out.println(name);
+    }
+}
+```
+
+### Output
+
+```text
+Ram
+```
+
+---
+
+## Creating String Using `new`
+
+A String can also be created using the `new` keyword.
+
+```java
+String name = new String("Ram");
+```
+
+However, for normal String usage, the String literal is simpler and commonly preferred:
+
+```java
+String name = "Ram";
+```
+
+---
+
+# 6.3 STRINGBUFFER AND STRINGBUILDER CLASS
+
+`StringBuffer` and `StringBuilder` are classes used to create **modifiable sequences of characters**.
+
+Unlike String, their contents can be changed.
+
+### Example
+
+```java
+StringBuffer sb = new StringBuffer("Hello");
+
+sb.append(" Java");
+
+System.out.println(sb);
+```
+
+### Output
+
+```text
+Hello Java
+```
+
+The original `StringBuffer` content was modified.
+
+---
+
+## String vs StringBuffer vs StringBuilder
+
+| Feature                     | String                  | StringBuffer                      | StringBuilder              |
+| --------------------------- | ----------------------- | --------------------------------- | -------------------------- |
+| Type                        | Class                   | Class                             | Class                      |
+| Mutable                     | No                      | Yes                               | Yes                        |
+| Can modify existing content | No                      | Yes                               | Yes                        |
+| Thread-safe                 | Yes because immutable   | Yes, synchronized                 | No                         |
+| Speed                       | Suitable for fixed text | Usually slower than StringBuilder | Usually faster             |
+| Common use                  | Normal text             | Multi-threaded situations         | Frequent text modification |
+
+### Simple Rule for Students
+
+**String**
+
+→ Use when the text does not need frequent modification.
+
+**StringBuffer**
+
+→ Use when text needs modification and thread safety is important.
+
+**StringBuilder**
+
+→ Use when text needs frequent modification in normal single-threaded programs.
+
+---
+
+# 6.4 STRINGBUFFER METHODS
+
+Some important methods of the `StringBuffer` class are:
+
+1. `append()`
+2. `reverse()`
+3. `delete()`
+4. `insert()`
+
+---
+
+## 6.4.1 `append()` Method
+
+The `append()` method is used to **add text at the end** of a StringBuffer.
+
+### Syntax
+
+```java
+stringBuffer.append(value);
+```
+
+### Example
+
+```java
+class AppendDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Hello");
+
+        sb.append(" Java");
+
+        System.out.println(sb);
+    }
+}
+```
+
+### Output
+
+```text
+Hello Java
+```
+
+### Explanation
+
+Initially:
+
+```text
+Hello
+```
+
+After:
+
+```java
+sb.append(" Java");
+```
+
+It becomes:
+
+```text
+Hello Java
+```
+
+---
+
+### Another Example
+
+```java
+StringBuffer sb = new StringBuffer("Age: ");
+
+sb.append(20);
+
+System.out.println(sb);
+```
+
+### Output
+
+```text
+Age: 20
+```
+
+`append()` can add different types of values such as:
+
+```java
+sb.append("Hello");
+sb.append(10);
+sb.append(5.5);
+sb.append('A');
+```
+
+---
+
+# 6.4.2 `reverse()` Method
+
+The `reverse()` method reverses the characters in a StringBuffer.
+
+### Syntax
+
+```java
+stringBuffer.reverse();
+```
+
+### Example
+
+```java
+class ReverseDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Java");
+
+        sb.reverse();
+
+        System.out.println(sb);
+    }
+}
+```
+
+### Output
+
+```text
+avaJ
+```
+
+### Another Example
+
+```java
+StringBuffer sb = new StringBuffer("Hello");
+
+sb.reverse();
+
+System.out.println(sb);
+```
+
+### Output
+
+```text
+olleH
+```
+
+---
+
+# 6.4.3 `delete()` Method
+
+The `delete()` method removes characters from a StringBuffer.
+
+### Syntax
+
+```java
+stringBuffer.delete(start, end);
+```
+
+Here:
+
+* `start` → starting index
+* `end` → ending index
+* The `start` index is included.
+* The `end` index is excluded.
+
+### Example
+
+```java
+class DeleteDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Hello");
+
+        sb.delete(1, 3);
+
+        System.out.println(sb);
+    }
+}
+```
+
+### Understanding the indexes
+
+```text
+H  e  l  l  o
+0  1  2  3  4
+```
+
+```java
+sb.delete(1, 3);
+```
+
+Deletes indexes:
+
+```text
+1 and 2
+```
+
+Therefore:
+
+```text
+Hello
+ ↓↓
+Hlo
+```
+
+### Output
+
+```text
+Hlo
+```
+
+### Important Rule
+
+For:
+
+```java
+delete(start, end)
+```
+
+the character at `start` is deleted, but the character at `end` is not deleted.
+
+---
+
+# 6.4.4 `insert()` Method
+
+The `insert()` method is used to insert characters or text at a specified position.
+
+### Syntax
+
+```java
+stringBuffer.insert(index, value);
+```
+
+### Example
+
+```java
+class InsertDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Helo");
+
+        sb.insert(2, "l");
+
+        System.out.println(sb);
+    }
+}
+```
+
+### Output
+
+```text
+Hello
+```
+
+### Explanation
+
+Initially:
+
+```text
+H  e  l  o
+0  1  2  3
+```
+
+The statement:
+
+```java
+sb.insert(2, "l");
+```
+
+inserts `l` at index 2.
+
+Result:
+
+```text
+Hello
+```
+
+---
+
+# Combined StringBuffer Example
+
+The following program demonstrates several methods together.
+
+```java
+class StringBufferDemo {
+    public static void main(String[] args) {
+
+        StringBuffer sb = new StringBuffer("Java");
+
+        sb.append(" Programming");
+        System.out.println(sb);
+
+        sb.insert(5, "Language ");
+        System.out.println(sb);
+
+        sb.reverse();
+        System.out.println(sb);
+
+    }
+}
+```
+
+### Possible Output
+
+```text
+Java Programming
+Java Language Programming
+gnimmargorP egaugnaL avaJ
+```
+
+---
+
+# 6.5 STRING LENGTH
+
+The `length()` method is used to find the number of characters in a String.
+
+### Syntax
+
+```java
+string.length();
+```
+
+### Example
+
+```java
+class LengthDemo {
+    public static void main(String[] args) {
+
+        String name = "Computer";
+
+        System.out.println(name.length());
+    }
+}
+```
+
+### Output
+
+```text
+8
+```
+
+Because:
+
+```text
+C o m p u t e r
+1 2 3 4 5 6 7 8
+```
+
+---
+
+## Example with Spaces
+
+```java
+String message = "Hello Java";
+
+System.out.println(message.length());
+```
+
+### Output
+
+```text
+10
+```
+
+The space between `Hello` and `Java` is also counted.
+
+```text
+H e l l o _ J a v a
+1 2 3 4 5 6 7 8 9 10
+```
+
+---
+
+## Empty String
+
+An empty String contains zero characters.
+
+```java
+String name = "";
+
+System.out.println(name.length());
+```
+
+### Output
+
+```text
+0
+```
+
+---
+
+## Important Difference
+
+For an array:
+
+```java
+array.length
+```
+
+For a String:
+
+```java
+string.length()
+```
+
+Notice the parentheses `()` in String.
+
+### Remember
+
+```java
+String name = "Ram";
+
+name.length();    // Correct
+```
+
+Not:
+
+```java
+name.length;      // Incorrect for String
+```
+
+---
+
+## Relationship Between Length and Index
+
+Suppose:
+
+```java
+String name = "Java";
+```
+
+Length:
+
+```text
+4
+```
+
+Indexes:
+
+```text
+J  a  v  a
+0  1  2  3
+```
+
+Therefore:
+
+> **Last index = length - 1**
+
+For `"Java"`:
+
+```text
+Last index = 4 - 1
+           = 3
+```
+
+---
+
+# 6.6 STRING CONCATENATION
+
+**String concatenation** means joining two or more Strings together.
+
+Java provides several ways to concatenate Strings.
+
+The most common method is the `+` operator.
+
+---
+
+## Using `+` Operator
+
+### Example
+
+```java
+class ConcatenationDemo {
+    public static void main(String[] args) {
+
+        String firstName = "Ram";
+        String lastName = "Sharma";
+
+        String fullName = firstName + " " + lastName;
+
+        System.out.println(fullName);
+    }
+}
+```
+
+### Output
+
+```text
+Ram Sharma
+```
+
+Here:
+
+```java
+firstName + " " + lastName
+```
+
+joins three parts:
+
+```text
+Ram + space + Sharma
+```
+
+---
+
+## Concatenating Strings with Numbers
+
+We can also combine Strings and numbers.
+
+```java
+int age = 20;
+
+System.out.println("Age = " + age);
+```
+
+### Output
+
+```text
+Age = 20
+```
+
+---
+
+## Important: Order Matters
+
+Consider:
+
+```java
+System.out.println(10 + 20 + " Java");
+```
+
+First:
+
+```text
+10 + 20 = 30
+```
+
+Then:
+
+```text
+30 + " Java"
+```
+
+Output:
+
+```text
+30 Java
+```
+
+But:
+
+```java
+System.out.println("Java " + 10 + 20);
+```
+
+Output:
+
+```text
+Java 1020
+```
+
+Why?
+
+Because once Java encounters a String, `+` works as String concatenation from left to right.
+
+---
+
+# `concat()` Method
+
+Java also provides the `concat()` method for joining Strings.
+
+### Syntax
+
+```java
+string1.concat(string2);
+```
+
+### Example
+
+```java
+class ConcatDemo {
+    public static void main(String[] args) {
+
+        String first = "Hello ";
+        String second = "Java";
+
+        String result = first.concat(second);
+
+        System.out.println(result);
+    }
+}
+```
+
+### Output
+
+```text
+Hello Java
+```
+
+---
+
+## `+` vs `concat()`
+
+| `+` Operator                    | `concat()`                                 |
+| ------------------------------- | ------------------------------------------ |
+| Very commonly used              | Used specifically for String concatenation |
+| Can combine String with numbers | Takes a String argument                    |
+| Easy for beginners              | Useful for String-to-String joining        |
+| Example: `"Age: " + 20`         | Example: `"Hello ".concat("Java")`         |
+
+---
+
+# Complete Example Program
+
+The following program combines several concepts from this chapter.
+
+```java
+class StringExample {
+    public static void main(String[] args) {
+
+        String firstName = "Ram";
+        String lastName = "Sharma";
+
+        // Concatenation
+        String fullName = firstName + " " + lastName;
+
+        // Length
+        System.out.println("Name: " + fullName);
+        System.out.println("Length: " + fullName.length());
+
+        // StringBuffer
+        StringBuffer sb = new StringBuffer("Java");
+
+        sb.append(" Programming");
+        System.out.println("After append: " + sb);
+
+        sb.reverse();
+        System.out.println("After reverse: " + sb);
+    }
+}
+```
+
+### Output
+
+```text
+Name: Ram Sharma
+Length: 10
+After append: Java Programming
+After reverse: gnimmargorP avaJ
+```
+
+---
+
+# Quick Revision Table
+
+| Concept           | Syntax                     | Purpose                    |
+| ----------------- | -------------------------- | -------------------------- |
+| Declare String    | `String name;`             | Declares a String variable |
+| Initialize String | `String name = "Ram";`     | Stores text                |
+| String length     | `name.length()`            | Finds String length        |
+| Concatenation     | `a + b`                    | Joins values               |
+| Concatenation     | `a.concat(b)`              | Joins two Strings          |
+| StringBuffer      | `new StringBuffer("Java")` | Creates mutable text       |
+| Append            | `sb.append("Hello")`       | Adds text at the end       |
+| Reverse           | `sb.reverse()`             | Reverses text              |
+| Delete            | `sb.delete(1, 3)`          | Removes characters         |
+| Insert            | `sb.insert(2, "A")`        | Inserts text               |
+
+---
+
+# String vs StringBuffer vs StringBuilder — Easy Memory Trick
+
+Remember:
+
+### String → Cannot modify
+
+```text
+String = Fixed text
+```
+
+### StringBuffer → Can modify + synchronized
+
+```text
+StringBuffer = Changeable + safer for shared threads
+```
+
+### StringBuilder → Can modify + generally faster
+
+```text
+StringBuilder = Changeable + faster for normal single-threaded use
+```
+
+---
+
+# Classroom Activity
+
+## Activity 1: Find the Length
+
+Write the length of each String without using a computer.
+
+1. `"Java"`
+2. `"Computer"`
+3. `"Hello World"`
+4. `"Nepal"`
+5. `""`
+
+---
+
+## Activity 2: Find the Index
+
+For:
+
+```text
+String = "PROGRAM"
+```
+
+Write the index of:
+
+* P
+* R
+* O
+* G
+* R
+* A
+* M
+
+---
+
+## Activity 3: Predict the Output
+
+Before running the following programs, predict the output.
+
+### Question A
+
+```java
+String name = "Ram";
+System.out.println(name.length());
+```
+
+### Question B
+
+```java
+String a = "Hello";
+String b = "Java";
+
+System.out.println(a + " " + b);
+```
+
+### Question C
+
+```java
+System.out.println(10 + 20 + " Java");
+```
+
+### Question D
+
+```java
+System.out.println("Java " + 10 + 20);
+```
+
+### Question E
+
+```java
+StringBuffer sb = new StringBuffer("Java");
+sb.reverse();
+
+System.out.println(sb);
+```
+
+---
+
+# Lab Exercises
+
+## Exercise 1 — Student Information
+
+Write a Java program to store and display:
+
+* Student name
+* Address
+* Faculty
+* College name
+
+Use String variables.
+
+---
+
+## Exercise 2 — Full Name
+
+Write a program that stores:
+
+```text
+First Name
+Last Name
+```
+
+and displays the complete name using String concatenation.
+
+---
+
+## Exercise 3 — String Length
+
+Write a program to input/store a student's name and display the number of characters in the name.
+
+---
+
+## Exercise 4 — StringBuffer Append
+
+Create a StringBuffer containing:
+
+```text
+Computer
+```
+
+Append:
+
+```text
+Engineering
+```
+
+and display the result.
+
+Expected result:
+
+```text
+ComputerEngineering
+```
+
+---
+
+## Exercise 5 — StringBuffer Reverse
+
+Create a StringBuffer containing:
+
+```text
+Nepal
+```
+
+Reverse it and display the result.
+
+---
+
+## Exercise 6 — StringBuffer Insert
+
+Create:
+
+```text
+Helo
+```
+
+Use `insert()` to make:
+
+```text
+Hello
+```
+
+---
+
+## Exercise 7 — StringBuffer Delete
+
+Create:
+
+```text
+Computer
+```
+
+Use the `delete()` method to remove selected characters and observe the result.
+
+---
+
+## Exercise 8 — Student Introduction
+
+Write a program that displays:
+
+```text
+My name is Ram.
+I am 17 years old.
+I study Computer Engineering.
+```
+
+Use String concatenation wherever appropriate.
+
+---
+
+# Exam-Oriented Questions
+
+## A. Very Short Answer Questions
+
+1. What is a String?
+2. Is String a primitive data type in Java?
+3. Which package contains the String class?
+4. What is String immutability?
+5. What is the use of `length()`?
+6. What is String concatenation?
+7. Name two classes used for mutable strings.
+8. What is the use of `append()`?
+9. What is the use of `reverse()`?
+10. What is the use of `insert()`?
+11. What is the use of `delete()`?
+12. Which class is generally faster, StringBuffer or StringBuilder?
+13. What is the starting index of a String?
+14. What is the last index of a String having length 10?
+15. What is the difference between `length` and `length()`?
+
+---
+
+# B. Short Answer Questions
+
+1. Define String with an example.
+2. Explain String declaration and initialization.
+3. Explain the difference between `char` and `String`.
+4. What is meant by String immutability?
+5. Explain StringBuffer with an example.
+6. Explain StringBuilder with an example.
+7. Differentiate between String and StringBuffer.
+8. Differentiate between StringBuffer and StringBuilder.
+9. Explain the `append()` method with an example.
+10. Explain the `reverse()` method with an example.
+11. Explain the `delete()` method with an example.
+12. Explain the `insert()` method with an example.
+13. Explain String concatenation with an example.
+14. Explain the `concat()` method.
+15. Explain the difference between `+` and `concat()`.
+
+---
+
+# C. Programming Questions
+
+1. Write a Java program to declare and display a String.
+2. Write a program to find the length of a String.
+3. Write a program to concatenate first name and last name.
+4. Write a program to demonstrate the `append()` method.
+5. Write a program to demonstrate the `reverse()` method.
+6. Write a program to demonstrate the `delete()` method.
+7. Write a program to demonstrate the `insert()` method.
+8. Write a program using StringBuffer that demonstrates all four methods:
+
+   * `append()`
+   * `reverse()`
+   * `delete()`
+   * `insert()`
+9. Write a program to display student information using String concatenation.
+10. Write a program to demonstrate the difference between String and StringBuffer.
+
+---
+
+# Key Points to Remember
+
+1. `String` is a class in Java.
+2. String values are written inside double quotes.
+3. String indexing starts from **0**.
+4. String objects are **immutable**.
+5. `StringBuffer` and `StringBuilder` are **mutable**.
+6. `append()` adds data at the end.
+7. `reverse()` reverses the characters.
+8. `delete()` removes characters.
+9. `insert()` inserts characters at a specified position.
+10. `length()` returns the length of a String.
+11. String concatenation can be performed using `+`.
+12. `concat()` can also be used to join Strings.
+13. `StringBuffer` is synchronized.
+14. `StringBuilder` is generally preferred when thread synchronization is not required and frequent modification is needed.
+15. For a String of length `n`, the last index is `n - 1`.
+
+---
+
+# Chapter Summary
+
+In this chapter, we studied **String in Java**. A String is used to store text and is represented by the `String` class. Unlike primitive data types, String is a class, and String objects are immutable.
+
+We also studied `StringBuffer` and `StringBuilder`, which provide mutable character sequences. Important StringBuffer methods such as `append()`, `reverse()`, `delete()`, and `insert()` were discussed with examples.
+
+Finally, we learned how to find the length of a String using `length()` and how to combine Strings using the `+` operator and `concat()` method.
+
+### Memory Map
+
+```text
+                    STRING IN JAVA
+                         |
+        +----------------+----------------+
+        |                |                |
+      String        StringBuffer    StringBuilder
+        |                |                |
+   Immutable          Mutable          Mutable
+        |                |                |
+     length()       append()         append()
+     concat()       reverse()        reverse()
+        +            delete()        delete()
+                     insert()        insert()
+```
+
+**Remember:**
+
+> `String` → Immutable
+> `StringBuffer` → Mutable + Synchronized
+> `StringBuilder` → Mutable + Generally Faster
